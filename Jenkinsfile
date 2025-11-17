@@ -1,17 +1,18 @@
 pipeline {
   agent any
   stages {
-    stage('git clone or git pull in myself') {
+    stage('git clone or git pull') {
       steps {
         git url: 'https://github.com/JS-EDS/ktjenkins.git', branch: 'master'
       }
     }
-    stage('CD using K8s in myself'){
+    stage('CD using k8s'){
       steps {
         sh '''
-	kubectl applty -f testapp.yml
-	'''
+        kubectl apply -f testapp.yml
+        '''
       }
     }
   }
 }
+
